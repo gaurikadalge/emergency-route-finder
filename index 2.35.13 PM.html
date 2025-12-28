@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pune Emergency Evacuation Route Finder</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🆘</span>
+                    <h1>Pune Emergency Evacuation Route Finder</h1>
+                </div>
+                <div class="tagline">Find safest evacuation routes using real road networks</div>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="calamity-selector">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Emergency Type</h3>
+                    <div class="calamity-buttons">
+                        <button class="calamity-btn flood active" data-type="flood">
+                            <i class="fas fa-water"></i> Flood
+                        </button>
+                        <button class="calamity-btn earthquake" data-type="earthquake">
+                            <i class="fas fa-mountain"></i> Earthquake
+                        </button>
+                        <button class="calamity-btn security" data-type="security">
+                            <i class="fas fa-shield-alt"></i> Security
+                        </button>
+                        <button class="calamity-btn fire" data-type="fire">
+                            <i class="fas fa-fire"></i> Fire
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="location-section">
+                    <h3><i class="fas fa-map-marker-alt"></i> Your Location in Pune</h3>
+                    <div class="location-input-group">
+                        <input type="text" class="location-input" id="current-location" placeholder="Enter area (e.g. Kothrud, Shivajinagar, Hinjewadi)" value="Kothrud">
+                        <button class="action-btn" id="find-routes-btn">
+                            <i class="fas fa-route"></i> Find Evacuation Routes
+                        </button>
+                    </div>
+                    <div class="calamity-info">
+                        <p><strong>Evacuation Zone:</strong> 8km radius from your location</p>
+                        <p><strong>Routing:</strong> Real road networks using OSRM</p>
+                    </div>
+                </div>
+                
+                <div class="safe-spots-list">
+                    <h3><i class="fas fa-map-pin"></i> Safe Evacuation Spots</h3>
+                    <div id="safe-spots-container">
+                        <!-- Safe spots will be dynamically added here -->
+                    </div>
+                </div>
+                
+                <div class="route-info" id="route-info">
+                    <h4><i class="fas fa-directions"></i> Evacuation Route Details</h4>
+                    <div id="route-details">
+                        <!-- Route details will be dynamically added here -->
+                    </div>
+                    <div id="route-instructions" class="route-instructions">
+                        <!-- Turn-by-turn instructions will appear here -->
+                    </div>
+                </div>
+                
+                <div class="algorithm-info">
+                    <h4>Emergency Evacuation Algorithm</h4>
+                    <p>This system uses <strong>real road routing</strong> to find the safest evacuation routes considering:</p>
+                    <div class="safety-factors">
+                        <ul>
+                            <li>Actual road distances using OSRM</li>
+                            <li>Safety score based on calamity type</li>
+                            <li>Road accessibility during emergencies</li>
+                            <li>Turn-by-turn navigation instructions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </div>
+        
+        <div class="status-bar" id="status-bar">
+            Enter your location in Pune and select emergency type to find evacuation routes.
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
